@@ -11,3 +11,17 @@ To Do:
 - [ ] Setup and link protobuf to webserver
 - [ ] Basic commands between tof_webserver and java-script webserver
 - [ ] Image transfer and blob handle for visualization
+
+
+## Setup NXP
+Installing neccessary packages/sources for ubuntu
+```console
+bash setup.bash
+```
+
+## Run webserver
+```console
+bash run.sh
+```
+
+Website is available on ```https://10.42.0.1:8080```

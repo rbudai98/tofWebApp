@@ -11,12 +11,17 @@
                 }
 
                 /* Create two equal columns that floats next to each other */
-                .column {
+                .column_left {
                         float: left;
                         width: 25%;
                         padding: 10px;
-                        height: 500px;
-                        /* Should be removed. Only for demonstration */
+                        height: 100vh;
+                }
+                .column_right {
+                        float: left;
+                        width: 75%;
+                        padding: 10px;
+                        height: 100vh;
                 }
 
                 /* Clear floats after the columns */
@@ -30,12 +35,16 @@
 
 <body>
         <div class="row">
-                <div class="column" style="background-color:#aaa;">
+                <div class="column_left" style="background-color:#dbd8d8;">
                         <h2>Command Interface</h2>
-
-                        <button id="setFrameType">Send "setFrameType"</button>
+                        <button id="refreshDevice">Refresh Device</button> </br>
+                </br></br></br>
+                        <button id="configDevice">Config Device</button></br>
+                </br></br></br>
+                        <button id="setFrameType">Send "setFrameType"</button></br>
+                </br></br></br>
                 </div>
-                <div class="column" style="background-color:#bbb;">
+                <div class="column_right" style="background-color:#7f7f7f;">
                         <h2></h2>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Hungarian_Parlament.jpg" alt="" />
                         <img id="my-image" src="" alt="" />
