@@ -6,8 +6,8 @@ tof_webserver
 * JavaScript protobuf library https://github.com/protobufjs/protobuf.js/
 
 To Do:
-[] Add webserver for SD card
-[] Initial webpage with websocket connection
-[] Setup and link protobuf to webserver
-[] Basic commands between tof_webserver and java-script webserver
-[] Image transfer and blob handle for visualization
+- [ ] Add webserver for SD card
+- [ ] Initial webpage with websocket connection
+- [ ] Setup and link protobuf to webserver
+- [ ] Basic commands between tof_webserver and java-script webserver
+- [ ] Image transfer and blob handle for visualization
