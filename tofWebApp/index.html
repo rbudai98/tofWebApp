@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <button id="setFrameType">Send "setFrameType"</button>
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/8/88/Hungarian_Parlament.jpg"
-      alt=""
-    />
-    <img id="my-image" src="" alt="" />
-    <script src="index.js"></script>
-  </body>
+
+<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+                * {
+                        box-sizing: border-box;
+                }
+
+                /* Create two equal columns that floats next to each other */
+                .column {
+                        float: left;
+                        width: 25%;
+                        padding: 10px;
+                        height: 500px;
+                        /* Should be removed. Only for demonstration */
+                }
+
+                /* Clear floats after the columns */
+                .row:after {
+                        content: "";
+                        display: table;
+                        clear: both;
+                }
+        </style>
+</head>
+
+<body>
+        <div class="row">
+                <div class="column" style="background-color:#aaa;">
+                        <h2>Command Interface</h2>
+
+                        <button id="setFrameType">Send "setFrameType"</button>
+                </div>
+                <div class="column" style="background-color:#bbb;">
+                        <h2></h2>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Hungarian_Parlament.jpg" alt="" />
+                        <img id="my-image" src="" alt="" />
+                </div>
+        </div>
+        <script src="index.js"></script>
+</body>
+
 </html>
