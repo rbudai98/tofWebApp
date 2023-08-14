@@ -1,19 +1,53 @@
+// Defines and variables
+
+const ipAddr = "ws://10.42.0.1:5000";
+const networkProtocol = "network-protocol";
+let connected = false;
+var socket = new WebSocket(ipAddr, networkProtocol);
+// Console log 
+
+(function () {
+        var old = console.log;
+        var logger = document.getElementById('tofConsole');
+        console.log = function (message) {
+                if (typeof message == 'object') {
+                        logger.innerHTML += Date.now() + ': ' + (JSON && JSON.stringify ? JSON.stringify(message) : message) + '<br />';
+                } else {
+                        logger.innerHTML += Date.now() + ': ' + message + '<br />';
+                }
+        }
+})();
+
+// Main Async function
+
 (async function () {
         const refreshDeviceBtn = document.getElementById("refreshDevice");
         const setFrameTypeBtn = document.getElementById("setFrameType");
 
-        // Create WebSocket connection
-        var socket = new WebSocket("ws://10.42.0.1:5000", "network-protocol");
-        // Listen for possible errors
-        socket.addEventListener("error", (event) => {
-                console.log("WebSocket error: ", event);
+        window.addEventListener("load", (event) => {
+                // Load protobuf structures
+                protobuf.load("resources/buffer.proto");
+                // Create WebSocket connection
+                console.log("Connecting to server...");
+                socket = new WebSocket(ipAddr, networkProtocol);
         });
 
-        socket.onopen = async function(event) {
+        // Listen for possible errors
+        socket.addEventListener("error", (event) => {
+                if (connected == true) {
+                        console.log("WebSocket error: ", event);
+                }
+        });
+
+        socket.onopen = async function (event) {
                 console.log("Connected to server");
+                connected = true;
         }
-        socket.onclose = async function(event){
-                console.log("Disconnected from server");
+        socket.onclose = async function (event) {
+                if (connected == true) {
+                        console.log("Disconnected from server");
+                }
+                connected = false;
         }
 
         socket.onmessage = async function (event) {
@@ -21,11 +55,16 @@
                 console.log("Receiving message from server...");
         }
 
-        window.addEventListener("load", (event) => {
-                protobuf.load("resources/buffer.proto");
-        });
 
         refreshDeviceBtn.addEventListener("click", () => {
+                if (connected == false) {
+                        console.log("Connecting to server...");
+                        socket = new WebSocket(ipAddr, networkProtocol);
+                        connected = true;
+                }
+                else {
+                        console.log("Already connected to server");
+                }
         });
 
 

@@ -17,6 +17,7 @@
                         padding: 10px;
                         height: 100vh;
                 }
+
                 .column_right {
                         float: left;
                         width: 75%;
@@ -24,8 +25,71 @@
                         height: 100vh;
                 }
 
+                .row_top {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        left: 0;
+                        bottom: 20%;
+                        padding: 0px;
+                        background-color: #ffffff;
+                        text-align: left;
+                        font-family: Arial, Helvetica, sans-serif;
+                        overflow: auto;
+                }
+
+                .row_bottom {
+                        position: absolute;
+                        top: 80%;
+                        right: 0;
+                        left: 0;
+                        bottom: 0;
+                        padding: 10px;
+                        background-color: #4b4b4b;
+                        text-align: left;
+                        vertical-align: text-top;
+                        color: #FFFFFF;
+                        font-family: monospace;
+                        overflow: auto;
+                        display: flex;
+                        flex-direction: column-reverse;
+
+                }
+
+                .button {
+                        display: block;
+                        width: 180px;
+                        border: none;
+                        background-color: #3392fd;
+                        color: white;
+                        padding: 10px 20px;
+                        font-size: 14px;
+                        cursor: pointer;
+                        text-align: center;
+                }
+
+                .button:hover {
+                        background-color: #010553;
+                        color: rgb(255, 255, 255);
+                }
+
                 /* Clear floats after the columns */
-                .row:after {
+                .row_top:after {
+                        content: "";
+                        display: table;
+                        clear: both;
+                }
+                .row_bottom:after {
+                        content: "";
+                        display: table;
+                        clear: both;
+                }
+                .column_left:after {
+                        content: "";
+                        display: table;
+                        clear: both;
+                }
+                .column_right:after {
                         content: "";
                         display: table;
                         clear: both;
@@ -34,22 +98,35 @@
 </head>
 
 <body>
-        <div class="row">
-                <div class="column_left" style="background-color:#dbd8d8;">
-                        <h2>Command Interface</h2>
-                        <button id="refreshDevice">Refresh Device</button> </br>
-                </br></br></br>
-                        <button id="configDevice">Config Device</button></br>
-                </br></br></br>
-                        <button id="setFrameType">Send "setFrameType"</button></br>
-                </br></br></br>
+        <div class="mainFrame">
+                <div class="row_top">
+                        <div class="row">
+                                <div class="column_left" style="background-color:#dbd8d8;">
+                                        <h2>Command Interface</h2>
+                                        <button class="button" id="refreshDevice">Refresh Device</button> </br>
+                                        </br></br></br>
+                                        <button class="button" id="configDevice">Config Device</button></br>
+                                        </br></br></br>
+                                        <button class="button" id="setFrameType">Send "setFrameType"</button></br>
+                                        </br></br></br>
+                                </div>
+                                <div class="column_right" style="background-color:#7f7f7f;">
+                                        <h2></h2>
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Hungarian_Parlament.jpg"
+                                                alt="" />
+                                        <img id="my-image" src="" alt="" />
+                                </div>
+                        </div>
                 </div>
-                <div class="column_right" style="background-color:#7f7f7f;">
-                        <h2></h2>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Hungarian_Parlament.jpg" alt="" />
-                        <img id="my-image" src="" alt="" />
+                <div class="row_bottom">
+                        <div id="tofConsole">
+
+                        </div>
                 </div>
+
         </div>
+
+        <!-- Neccessary bindings and java-script functions -->
         <script src="//cdn.jsdelivr.net/npm/protobufjs@7.X.X/dist/protobuf.js"></script>
         <script src="index.js"></script>
 </body>
